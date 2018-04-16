@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.baizhitong:app-common-core-pages:2.1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/baizhitong/app-common-core-pages/2.1.0-SNAPSHOT/app-common-core-pages-2.1.0-20160304.093602-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/baizhitong/app-common-core-pages/2.1.0-SNAPSHOT/app-common-core-pages-2.1.0-20160304.093602-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/baizhitong/app-common-core-pages/2.1.0-SNAPSHOT/app-common-core-pages-2.1.0-20160304.093602-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

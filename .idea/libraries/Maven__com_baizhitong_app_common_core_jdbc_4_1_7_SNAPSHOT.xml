@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.baizhitong:app-common-core-jdbc:4.1.7-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/baizhitong/app-common-core-jdbc/4.1.7-SNAPSHOT/app-common-core-jdbc-4.1.7-20170818.054715-6.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/baizhitong/app-common-core-jdbc/4.1.7-SNAPSHOT/app-common-core-jdbc-4.1.7-20170818.054715-6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/baizhitong/app-common-core-jdbc/4.1.7-SNAPSHOT/app-common-core-jdbc-4.1.7-20170818.054715-6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
