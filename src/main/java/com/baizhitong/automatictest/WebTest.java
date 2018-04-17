@@ -35,7 +35,8 @@ public class WebTest {
     }
 
     @Test(groups = "web",invocationCount = 1,threadPoolSize = 1,dataProvider = "loginData")
-    public void t1(final String loginAccount,String password){
+    public void t1(String school,String clazz,String name,
+                   final String loginAccount,String password,String section,String grade){
 
         if(StringUtils.isEmpty(loginAccount)||StringUtils.isEmpty(password)){
             Assert.assertTrue(true);
@@ -90,15 +91,16 @@ public class WebTest {
         Object[][] accout_pwd_group = new Object[3000][];
         FileReader fr;
         try {
-            fr = new FileReader(new File("D:/1/account.txt"));
+            fr = new FileReader(new File("D:/1/stuInfo.txt"));
             BufferedReader br = new BufferedReader(fr);
-            String account = br.readLine();
+            String info = br.readLine();
             int i = 0;
-            while(StringUtils.isNotEmpty(account)){
-                Object[] account_pwd = new Object[]{account,account.substring(12)};
+            while(StringUtils.isNotEmpty(info)){
+                String[] infos = info.split(",");
+                Object[] account_pwd = new Object[]{infos[0],infos[1],infos[2],infos[3],infos[3].substring(12),infos[4],infos[5]};
                 accout_pwd_group[i] = account_pwd;
                 i++;
-                account = br.readLine();
+                info = br.readLine();
             }
         }catch (Exception ex){
 
