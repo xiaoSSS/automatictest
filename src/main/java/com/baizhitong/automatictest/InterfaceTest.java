@@ -23,8 +23,12 @@ public class InterfaceTest extends AbstractTransactionalTestNGSpringContextTests
 
     @Test(groups = "interface")
     public void test1(){
-
         String res = testAction.test1();
         Assert.assertTrue("test1".equals(res));
+    }
+
+    @Test(groups = "interface")
+    public void test2(){
+
     }
 }

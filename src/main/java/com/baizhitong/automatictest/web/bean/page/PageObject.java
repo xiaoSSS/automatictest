@@ -1,4 +1,4 @@
-package com.baizhitong.automatictest.web.bean;
+package com.baizhitong.automatictest.web.bean.page;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class PageObject {
 
     private String title;
 
-    private Map<String,PageElement> elements = new HashMap<String,PageElement>();
+    private List<PageElement> elements = new ArrayList<PageElement>();
 
     public String getId() {
         return id;
@@ -42,15 +42,17 @@ public class PageObject {
         this.title = title;
     }
 
-    public Map<String, PageElement> getElements() {
+    public List<PageElement> getElements() {
         return elements;
     }
 
-    public void setElements(Map<String, PageElement> elements) {
+    public void setElements(List<PageElement> elements) {
         this.elements = elements;
     }
 
-    public PageElement getElement(String key){
-        return elements.get(key);
+    public PageElement getElements(String id){
+        return elements.stream().filter(
+                element->element.getId().equals(id)
+                ).findFirst().get();
     }
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -33,6 +34,7 @@ public class WebTest {
         System.setProperty("webdriver.chrome.driver", "D:/chromedriver/chromedriver.exe");
         driver  = new ChromeDriver();
     }
+
 
     @Test(groups = "web",invocationCount = 1,threadPoolSize = 1,dataProvider = "loginData")
     public void t1(String school,String clazz,String name,
