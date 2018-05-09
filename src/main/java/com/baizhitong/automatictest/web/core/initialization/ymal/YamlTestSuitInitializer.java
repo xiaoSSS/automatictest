@@ -22,8 +22,8 @@ public class YamlTestSuitInitializer implements ITestSuitInitializer {
     private static final String TASK_ROOT = "/task";
 
     public void init(TestContext context) {
-
         initPageObject(context);
+        initPageTask(context);
     }
 
     private void initPageObject(TestContext context){
@@ -43,15 +43,16 @@ public class YamlTestSuitInitializer implements ITestSuitInitializer {
     }
 
     private void initPageTask(TestContext context){
-        URL pageUrl = YamlTestSuitInitializer.class.getClassLoader().getResource(TASK_ROOT);
-        if(pageUrl == null) {
-            pageUrl = YamlTestSuitInitializer.class.getResource(TASK_ROOT);
+        URL taskUrl = YamlTestSuitInitializer.class.getClassLoader().getResource(TASK_ROOT);
+        if(taskUrl == null) {
+            taskUrl = YamlTestSuitInitializer.class.getResource(TASK_ROOT);
         }
-        File file = new File(pageUrl.getFile());
+        File file = new File(taskUrl.getFile());
         findYaml(file,(f)->{
             try{
                 PageTask pageTask = Yaml.loadType(f,PageTask.class);
-
+                pageTask.initTaskStep(context);
+                context.addPageTask(pageTask);
             }catch (Exception ex){}
             return null;
         });
