@@ -13,13 +13,12 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 /**
  * Created by wangsj on 2018/4/8.
@@ -28,11 +27,30 @@ public class WebTest {
 
     WebDriver driver;
 
+    FileWriter fileWriter;
+
     @BeforeClass
     public void pre(){
         Reporter.clear();
         System.setProperty("webdriver.chrome.driver", "D:/chromedriver/chromedriver.exe");
         driver  = new ChromeDriver();
+        try {
+            fileWriter = new FileWriter("D:/testResult/result1.txt");
+        }catch (Exception ex){
+
+        }
+    }
+
+    @AfterClass
+    public void post(){
+        driver.close();
+        driver.quit();
+        try {
+            if(fileWriter!=null) {
+                fileWriter.flush();
+                fileWriter.close();
+            }
+        }catch (Exception ex){}
     }
 
 
@@ -71,15 +89,6 @@ public class WebTest {
                     return res;
                 }
             });
-//            WebElement userInfoElement = driver.findElement(By.tagName("pre"));
-//            String resInfo = userInfoElement.getText();
-//            ResultVo res = JsonUtils.JsonToObject(resInfo, ResultVo.class);
-//            Map userInfo = (Map)res.getData();
-//            String _orgName = MapUtils.getString(userInfo,"orgName");
-//            String _userName = MapUtils.getString(userInfo,"userName");
-//            String _sectionName = MapUtils.getString(userInfo,"userSectionName");
-//            String _gradeName = MapUtils.getString(userInfo,"userGradeCodeName");
-//            String _subjectName = MapUtils.getString(userInfo,"teacherSubjectName");
         }catch (RuntimeException ex){
             throw ex;
         }finally{
@@ -90,7 +99,7 @@ public class WebTest {
 
     @DataProvider
     public static Object[][] loginData(){
-        Object[][] accout_pwd_group = new Object[3000][];
+        Object[][] accout_pwd_group = new Object[10][];
         FileReader fr;
         try {
             fr = new FileReader(new File("D:/1/stuInfo.txt"));
@@ -109,4 +118,5 @@ public class WebTest {
         }
         return accout_pwd_group;
     }
+
 }
