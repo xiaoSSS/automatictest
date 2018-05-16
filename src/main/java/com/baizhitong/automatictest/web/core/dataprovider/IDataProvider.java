@@ -7,5 +7,6 @@ import com.baizhitong.automatictest.web.bean.context.TestContext;
  */
 public interface IDataProvider {
 
-    void providerTestData(TestContext context);
+    void provideTestData(TestContext context);
+
 }

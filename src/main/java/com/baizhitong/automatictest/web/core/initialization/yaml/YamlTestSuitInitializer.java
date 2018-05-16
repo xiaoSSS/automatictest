@@ -1,15 +1,15 @@
-package com.baizhitong.automatictest.web.core.initialization.ymal;
+package com.baizhitong.automatictest.web.core.initialization.yaml;
 
 import com.baizhitong.automatictest.web.bean.context.TestContext;
 import com.baizhitong.automatictest.web.bean.page.PageObject;
 import com.baizhitong.automatictest.web.bean.page.PageTask;
 import com.baizhitong.automatictest.web.core.initialization.ITestSuitInitializer;
+import com.baizhitong.automatictest.web.utils.YamlFileUtils;
 import org.ho.yaml.Yaml;
 
 import java.net.URL;
 
 import java.io.File;
-import java.util.function.Function;
 
 
 /**
@@ -27,12 +27,7 @@ public class YamlTestSuitInitializer implements ITestSuitInitializer {
     }
 
     private void initPageObject(TestContext context){
-        URL pageUrl = YamlTestSuitInitializer.class.getClassLoader().getResource(PAGE_ROOT);
-        if(pageUrl == null) {
-            pageUrl = YamlTestSuitInitializer.class.getResource(PAGE_ROOT);
-        }
-        File file = new File(pageUrl.getFile());
-        findYaml(file,(f)->{
+        YamlFileUtils.findYaml(PAGE_ROOT,(f)->{
             try {
                 PageObject pageObject = Yaml.loadType(f, PageObject.class);
                 context.addPageObject(pageObject);
@@ -43,12 +38,7 @@ public class YamlTestSuitInitializer implements ITestSuitInitializer {
     }
 
     private void initPageTask(TestContext context){
-        URL taskUrl = YamlTestSuitInitializer.class.getClassLoader().getResource(TASK_ROOT);
-        if(taskUrl == null) {
-            taskUrl = YamlTestSuitInitializer.class.getResource(TASK_ROOT);
-        }
-        File file = new File(taskUrl.getFile());
-        findYaml(file,(f)->{
+        YamlFileUtils.findYaml(TASK_ROOT,(f)->{
             try{
                 PageTask pageTask = Yaml.loadType(f,PageTask.class);
                 pageTask.initTaskStep(context);
@@ -58,18 +48,5 @@ public class YamlTestSuitInitializer implements ITestSuitInitializer {
         });
     }
 
-    private void findYaml(File file, Function<File,?> function){
-        if(file.isDirectory()){
-            File[] subFiles = file.listFiles();
-            for(File f:subFiles){
-                findYaml(f,function);
-            }
-        }else{
-            try {
-                function.apply(file);
-            }catch (Exception ex){
-                ex.printStackTrace();
-            }
-        }
-    }
+
 }

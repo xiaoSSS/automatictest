@@ -7,7 +7,10 @@ import com.baizhitong.automatictest.web.bean.context.TestContext;
  */
 public class DefaultDataProvider implements IDataProvider {
 
-    public void providerTestData(TestContext context) {
+    public void provideTestData(TestContext context) {
+
+
+
 
     }
 }

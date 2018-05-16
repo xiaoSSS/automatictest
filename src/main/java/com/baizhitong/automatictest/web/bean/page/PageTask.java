@@ -12,8 +12,6 @@ public class PageTask {
 
     private String id;
 
-    private String validation;
-
     private String pageId;
 
     private List<String> elementIds;
@@ -26,14 +24,6 @@ public class PageTask {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getValidation() {
-        return validation;
-    }
-
-    public void setValidation(String operate) {
-        this.validation = operate;
     }
 
     public String getPageId() {

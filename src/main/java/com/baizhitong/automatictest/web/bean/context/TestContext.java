@@ -1,5 +1,6 @@
 package com.baizhitong.automatictest.web.bean.context;
 
+import com.baizhitong.automatictest.web.bean.data.TestData;
 import com.baizhitong.automatictest.web.bean.page.PageObject;
 import com.baizhitong.automatictest.web.bean.page.PageTask;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +21,8 @@ public class TestContext {
     private Map<String,PageObject> pageObjects = new LinkedHashMap<>();
 
     private Map<String,PageTask> pageTasks = new LinkedHashMap<>();
+
+    private Map<String,TestData> testDatas = new LinkedHashMap<>();
 
     public void addPageObject(PageObject pageObject){
         if(null == pageObject) {
@@ -43,5 +46,15 @@ public class TestContext {
         return pageTasks;
     }
 
+    public void addTestData(TestData testData){
+        if(null == testData){
+            return;
+        }
+        testDatas.put(testData.getId(),testData);
+    }
+
+    public Map<String,TestData> getTestDatas() {
+        return testDatas;
+    }
 }
 
