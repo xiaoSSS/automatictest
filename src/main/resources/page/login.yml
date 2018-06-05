@@ -1,0 +1,13 @@
+id:loginPage
+url:/pub/passport/login.html
+title:用户登录
+elements:
+  - !com.baizhitong.automatictest.web.bean.page.PageElement
+    id:input_loginName
+    expression:#loginName
+  - !com.baizhitong.automatictest.web.bean.page.PageElement
+    id:input_password
+    expression:#password
+  - !com.baizhitong.automatictest.web.bean.page.PageElement
+    id:button_submit
+    expression:#submit_btn
